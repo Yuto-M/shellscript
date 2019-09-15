@@ -1,0 +1,41 @@
+#!/bin/bash
+
+## ファイル名: generate-task-file.sh
+## 処理内容: taskファイルの生成を行う
+
+ask_task_name='タスク名を入力してください'
+
+echo "${ask_task_name}"
+
+get_task_file_body() {
+  cat <<EOS
+${task_name}
+タスクのURLを貼ってね！！
+
+## 原因
+
+## 修正案
+
+## 確認方法
+
+## その他
+
+EOS
+}
+
+while :
+do
+  read -r task_name
+  if [[ -n "${task_name}" ]]; then
+    file_name="${task_name}.md"
+    file_body=$(get_task_file_body)
+    echo "${file_body}" > "${file_name}"
+    echo "${file_name}でファイルを作成しました"
+    break
+  else
+    echo '空文字列は無効です'
+    echo "${ask_task_name}"
+  fi
+done
+
+

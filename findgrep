@@ -1,0 +1,27 @@
+#!/bin/bash
+
+while :
+do
+  read -rp '検索文字列を入力してください: ' pattern
+  read -rp '再帰的に検索する際の起点ディレクトリを入力してください（入力されない場合は、カレントディレクトリを起点とします。）: ' directory
+  read -rp 'ファイル名を入力してください。（入力されない場合は、全てのファイル名を検索します。）: ' name
+
+  # 入力がなければデフォルト値を設定
+  if [[ -z "${directory}" ]]; then
+    directory='.'
+  fi
+
+  # 入力がなければデフォルト値を設定
+  if [[ -z "${name}" ]]; then
+    name='*'
+  fi
+
+  # 検索文字列が入力されていればループを抜ける
+  if [[ -n "${pattern}" ]]; then
+    break
+  else
+    echo '検索文字列の入力は必須です。'
+  fi
+done
+
+find "${directory}" -type f -name "${name}" -print0 | xargs -0 grep -nH "${pattern}"
