@@ -29,6 +29,8 @@ do
   read -r task_name
   if [[ -n "${task_name}" ]]; then
     file_name="${task_name}.md"
+    # #以降の数字を取得
+    issue_number="${task_name##*\#}"
     break
   else
     echo '空文字列は無効です'
@@ -42,7 +44,7 @@ while :
 do
   read -r issue_url
   if [[ -n "${issue_url}" ]]; then
-    file_name="${task_name}.md"
+    file_name="${issue_number}${task_name}.md"
     file_body=$(get_task_file_body)
     echo "${file_body}" > "${file_name}"
     echo "${file_name}でファイルを作成しました"
