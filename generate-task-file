@@ -4,13 +4,12 @@
 ## 処理内容: taskファイルの生成を行う
 
 ask_task_name='タスク名を入力してください'
-
-echo "${ask_task_name}"
+ask_issue_url='issueのURLを入力してください'
 
 get_task_file_body() {
   cat <<EOS
 ${task_name}
-タスクのURLを貼ってね！！
+${issue_url}
 
 ## 原因
 
@@ -23,14 +22,13 @@ ${task_name}
 EOS
 }
 
+echo "${ask_task_name}"
+
 while :
 do
   read -r task_name
   if [[ -n "${task_name}" ]]; then
     file_name="${task_name}.md"
-    file_body=$(get_task_file_body)
-    echo "${file_body}" > "${file_name}"
-    echo "${file_name}でファイルを作成しました"
     break
   else
     echo '空文字列は無効です'
@@ -38,4 +36,19 @@ do
   fi
 done
 
+echo "${ask_issue_url}"
 
+while :
+do
+  read -r issue_url
+  if [[ -n "${issue_url}" ]]; then
+    file_name="${task_name}.md"
+    file_body=$(get_task_file_body)
+    echo "${file_body}" > "${file_name}"
+    echo "${file_name}でファイルを作成しました"
+    break
+  else
+    echo '空文字列は無効です'
+    echo "${ask_issue_url}"
+  fi
+done
