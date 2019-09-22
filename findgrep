@@ -1,5 +1,8 @@
 #!/bin/bash
 
+## ファイル名: findgrep
+## 処理内容: TODO
+
 while :
 do
   read -rp '検索文字列を入力してください: ' pattern
