@@ -50,7 +50,9 @@ while :
 do
   read -r issue_url
   if [[ -n "${issue_url}" ]]; then
-    file_name="${issue_number}${task_name}.md"
+    # 「/」がファイル名に含まれているとファイルシステムにディレクトリとして見なされるため正常にファイル作成ができないので「-」に置換
+    replaced_file_name="${task_name//\//-}"
+    file_name="${issue_number}${replaced_file_name}.md"
     file_body=$(get_task_file_body)
     echo "${file_body}" > "${task_dir_path}/${file_name}" || abort 'ファイルの生成に失敗しました'
     echo "${file_name}でファイルを作成しました"
