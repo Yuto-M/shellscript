@@ -6,7 +6,17 @@
 echo '生成する日報を選択してください'
 select daily_repo_type in '明日' '来週月曜' '今日'
 do
-	echo "${daily_repo_type}の日報を作成しますか？[Y/n]: "
+	echo '出勤タイプを選択してください'
+	select work_type in '出社' 'リモート'
+	do
+		if [[ $work_type == '出社' || $work_type == 'リモート' ]]; then
+			break;
+		else
+			echo '正しい出勤タイプが選択されなかったため日報を生成しないで終了します'
+			exit 1
+		fi
+	done
+	echo "【${daily_repo_type}】の日報を【${work_type}タイプ】で作成しますか？[Y/n]: "
 	read -r confirm
 	if [[ ($confirm =~ [Yy]) || ($confirm == '') ]]; then
 		break
@@ -36,6 +46,16 @@ get_day_of_week() {
 	return 0
 }
 
+get_start_datetime() {
+	local datetime_list=('9:00' '10:00')
+	if [[ $work_type == 'リモート' ]]; then
+		echo "${datetime_list[0]}"
+	else
+		echo "${datetime_list[1]}"
+	fi
+	return 0
+}
+
 generate_tommorow_daily_repo() {
 	local dowIdx
 	dowIdx="$(date -v+1d '+%w')"
@@ -44,6 +64,8 @@ generate_tommorow_daily_repo() {
 	# 曜日の決定
 	dow="$(get_day_of_week "${dowIdx}")"
 	echo "${dow}"
+	# 開始時刻の設定
+	start_datetime="$(get_start_datetime)"
 	# ファイルが存在していない時のみ作成
 	if [[ -e "${HOME}/Desktop/AutoScale-for-me/daily-repo/${tomorrow}日報.md" ]]; then
 		echo "${HOME}/Desktop/AutoScale-for-me/daily-repo/${tomorrow}日報.mdは存在しています"
@@ -55,15 +77,15 @@ ${file_tomorrow} ($dow)
 
 予定
 ${file_tomorrow} ($dow)
-- 10:00 出社
-- 10:00 - 13:00
+- ${start_datetime} ${work_type}
+- ${start_datetime} - 13:00
 - 13:00 - 14:00 休憩
 - 18:30 - 19:00 次回の準備
 
 実績
 ${file_tomorrow} ($dow)
-- 10:00 出社
-- 10:00 - 13:00
+- ${start_datetime} ${work_type}
+- ${start_datetime} - 13:00
 - 13:00 - 14:00 休憩
 - 18:30 - 19:00 次回の準備
 
@@ -79,6 +101,8 @@ generate_next_monday_daily_repo() {
 	# 曜日の決定
 	dow="$(get_day_of_week "${dowIdx}")"
 	echo "${dow}"
+	# 開始時刻の設定
+	start_datetime="$(get_start_datetime)"
 	# ファイルが存在していない時のみ作成
 	if [[ -e "${HOME}/Desktop/AutoScale-for-me/daily-repo/${next_monday}日報.md" ]]; then
 		echo "${HOME}/Desktop/AutoScale-for-me/daily-repo/${next_monday}日報.mdは存在しています"
@@ -90,15 +114,15 @@ ${file_next_monday} ($dow)
 
 予定
 ${file_next_monday} ($dow)
-- 10:00 出社
-- 10:00 - 13:00
+- ${start_datetime} ${work_type}
+- ${start_datetime} - 13:00
 - 13:00 - 14:00 休憩
 - 18:30 - 19:00 次回の準備
 
 実績
 ${file_next_monday} ($dow)
-- 10:00 出社
-- 10:00 - 13:00
+- ${start_datetime} ${work_type}
+- ${start_datetime} - 13:00
 - 13:00 - 14:00 休憩
 - 18:30 - 19:00 次回の準備
 
@@ -114,6 +138,8 @@ generate_today_daily_repo() {
 	# 曜日の決定
 	dow="$(get_day_of_week "${dowIdx}")"
 	echo "${dow}"
+	# 開始時刻の設定
+	start_datetime="$(get_start_datetime)"
 	# ファイルが存在していない時のみ作成
 	if [[ -e "${HOME}/Desktop/AutoScale-for-me/daily-repo/${today}日報.md" ]]; then
 		echo "${HOME}/Desktop/AutoScale-for-me/daily-repo/${today}日報.mdは存在しています"
@@ -125,15 +151,15 @@ ${file_today} ($dow)
 
 予定
 ${file_today} ($dow)
-- 10:00 出社
-- 10:00 - 13:00
+- ${start_datetime} ${work_type}
+- ${start_datetime} - 13:00
 - 13:00 - 14:00 休憩
 - 18:30 - 19:00 次回の準備
 
 実績
 ${file_today} ($dow)
-- 10:00 出社
-- 10:00 - 13:00
+- ${start_datetime} ${work_type}
+- ${start_datetime} - 13:00
 - 13:00 - 14:00 休憩
 - 18:30 - 19:00 次回の準備
 
