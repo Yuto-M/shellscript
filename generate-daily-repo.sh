@@ -80,14 +80,13 @@ ${file_tomorrow} ($dow)
 - ${start_datetime} ${work_type}
 - ${start_datetime} - 13:00
 - 13:00 - 14:00 休憩
-- 18:30 - 19:00 次回の準備
+- 16:00 - 17:00 PRレビュー
 
 実績
 ${file_tomorrow} ($dow)
 - ${start_datetime} ${work_type}
 - ${start_datetime} - 13:00
 - 13:00 - 14:00 休憩
-- 18:30 - 19:00 次回の準備
 
 EOS
 	fi
@@ -117,14 +116,13 @@ ${file_next_monday} ($dow)
 - ${start_datetime} ${work_type}
 - ${start_datetime} - 13:00
 - 13:00 - 14:00 休憩
-- 18:30 - 19:00 次回の準備
+- 16:00 - 17:00 PRレビュー
 
 実績
 ${file_next_monday} ($dow)
 - ${start_datetime} ${work_type}
 - ${start_datetime} - 13:00
 - 13:00 - 14:00 休憩
-- 18:30 - 19:00 次回の準備
 
 EOS
 	fi
@@ -154,14 +152,13 @@ ${file_today} ($dow)
 - ${start_datetime} ${work_type}
 - ${start_datetime} - 13:00
 - 13:00 - 14:00 休憩
-- 18:30 - 19:00 次回の準備
+- 16:00 - 17:00 PRレビュー
 
 実績
 ${file_today} ($dow)
 - ${start_datetime} ${work_type}
 - ${start_datetime} - 13:00
 - 13:00 - 14:00 休憩
-- 18:30 - 19:00 次回の準備
 
 EOS
 	fi
