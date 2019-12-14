@@ -59,7 +59,7 @@ get_start_datetime() {
 generate_tommorow_daily_repo() {
 	local dowIdx
 	dowIdx="$(date -v+1d '+%w')"
-	echo "${dowIdx}"
+
 	local dow
 	# 曜日の決定
 	dow="$(get_day_of_week "${dowIdx}")"
@@ -95,7 +95,7 @@ EOS
 generate_next_monday_daily_repo() {
 	local dowIdx
 	dowIdx="$(date -v-monday -v+7d '+%w')"
-	echo "${dowIdx}"
+
 	local dow
 	# 曜日の決定
 	dow="$(get_day_of_week "${dowIdx}")"
@@ -131,7 +131,7 @@ EOS
 generate_today_daily_repo() {
 	local dowIdx
 	dowIdx="$(date '+%w')"
-	echo "${dowIdx}"
+
 	local dow
 	# 曜日の決定
 	dow="$(get_day_of_week "${dowIdx}")"
