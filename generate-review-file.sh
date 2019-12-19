@@ -16,6 +16,13 @@ ${pull_req_name}
 pull req url
 ${pull_req_url}
 
+## 想定作業時間
+時間:
+
+## 実際作業時間と振り返り
+時間:
+振り返り:
+
 ## 動作確認
 
 
