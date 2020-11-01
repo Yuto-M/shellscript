@@ -36,6 +36,7 @@ next_monday="$(date -v-monday -v+7d +'%Y%m%d')" # 来週の月曜
 file_today="$(date +%Y-%m-%d)"
 file_tomorrow="$(date -v+1d +%Y-%m-%d)"
 file_next_monday="$(date -v-monday -v+7d +'%Y-%m-%d')"
+file_break_time="13:00 - 15:00 長め休憩"
 
 # 引数で指定された曜日を返す
 get_day_of_week() {
@@ -79,7 +80,7 @@ ${file_tomorrow} ($dow)
 ${file_tomorrow} ($dow)
 - ${start_datetime} ${work_type}
 - ${start_datetime} - 13:00
-- 13:00 - 14:00 休憩
+- ${file_break_time}
 - 16:00 - 17:00 (PRたまっていたら)PRレビュー
 
 
@@ -87,8 +88,7 @@ ${file_tomorrow} ($dow)
 ${file_tomorrow} ($dow)
 - ${start_datetime} ${work_type}
 - ${start_datetime} - 13:00
-- 13:00 - 14:00 休憩
-
+- ${file_break_time}
 
 # 後で調べる・疑問点
 
@@ -120,7 +120,7 @@ ${file_next_monday} ($dow)
 ${file_next_monday} ($dow)
 - ${start_datetime} ${work_type}
 - ${start_datetime} - 13:00
-- 13:00 - 14:00 休憩
+- ${file_break_time}
 - 16:00 - 17:00 (PRたまっていたら)PRレビュー
 
 
@@ -128,8 +128,7 @@ ${file_next_monday} ($dow)
 ${file_next_monday} ($dow)
 - ${start_datetime} ${work_type}
 - ${start_datetime} - 13:00
-- 13:00 - 14:00 休憩
-
+- ${file_break_time}
 
 # 後で調べる・疑問点
 
@@ -161,7 +160,7 @@ ${file_today} ($dow)
 ${file_today} ($dow)
 - ${start_datetime} ${work_type}
 - ${start_datetime} - 13:00
-- 13:00 - 14:00 休憩
+- ${file_break_time}
 - 16:00 - 17:00 (PRたまっていたら)PRレビュー
 
 
@@ -169,8 +168,7 @@ ${file_today} ($dow)
 ${file_today} ($dow)
 - ${start_datetime} ${work_type}
 - ${start_datetime} - 13:00
-- 13:00 - 14:00 休憩
-
+- ${file_break_time}
 
 # 後で調べる・疑問点
 
