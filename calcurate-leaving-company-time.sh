@@ -1,7 +1,13 @@
 #!/bin/bash
 
 ## ファイル名: calcurate-leaving-company-time
-## 処理内容: 出社時間・休憩開始時間・休憩終了時間を入力したら自動で退社時間を計算して、clipboardに設定してくれる
+## 処理内容: 出社時間・休憩開始時間・休憩終了時間を入力したら自動で退社時間を計算して、clipboardに保存してくれる
+
+<< COMMENTOUT
+動作環境
+- macOS
+- pbcopyインスコ済み(インスコしていない場合はスクリプト最後のpbcopy実行をコメントアウト)
+COMMENTOUT
 
 today_date=`date +%Y-%m-%d`
 # NOTE: 8時間労働の設定
