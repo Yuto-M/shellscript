@@ -8,3 +8,5 @@ https://qiita.com/genya0228/items/01b63d449a6c1956df7d
 ```
 ln -s ~/develop/shellscript/generate-review-file.sh /usr/local/bin/generate-review-file
 ```
+### 配布用補足
+- chmod 700 calcurate-leaving-company-time.sh で実行権限与える
