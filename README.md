@@ -1,8 +1,7 @@
 # shellscript
 自作したシェルスクリプトをまとめるためのrepository。
 
-コマンド化する場合は、/usr/local/binディレクトリ(pathが通っているところ)にシンボリックリンクを作成して対応する。
-https://qiita.com/genya0228/items/01b63d449a6c1956df7d
+[コマンド化する場合は、/usr/local/binディレクトリ(pathが通っているところ)にシンボリックリンクを作成して対応する。](https://qiita.com/genya0228/items/01b63d449a6c1956df7d)
 
 シンボリックリンクの貼り方例
 ```
